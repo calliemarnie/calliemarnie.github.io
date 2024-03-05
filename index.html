@@ -2,17 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lobster&display=swap"
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Calliemarnie</title>
   </head>
   <body>
+    <audio id="audio" src="/src/assets/perfect.mp3"></audio>
     <div id="cursor">
       <div></div>
     </div>
@@ -24,12 +26,14 @@
         />
       </div>
 
-      <section class="h-screen flex flex-col items-center text-white">
-        <p class="font-heading text-4xl my-6">- 03.02.35 -</p>
-        <h1 class="text-8xl font-heading hoverable">Hoàng & Hiền</h1>
+      <section
+        class="h-screen flex flex-col items-center text-white select-none"
+      >
+        <p class="font-pacifico text-4xl my-6">- 03.02.35 -</p>
+        <h1 class="text-8xl font-pacifico hoverable">Hoàng & Hiền</h1>
         <div class="flex-grow"></div>
         <svg
-          class="w-16"
+          class="w-32"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -50,6 +54,84 @@
             ></path>
           </g>
         </svg>
+      </section>
+
+      <section
+        class="bg-auto bg-repeat py-20"
+        style="
+          background-image: url(/src/assets/effect.png);
+          background-color: #234070;
+          background-position: center center;
+        "
+      >
+        <div class="mx-auto max-w-[960px] font-arial space-y-5">
+          <div class="text-9xl font-bold uppercase">
+            <p class="text-yellow-400">ngày</p>
+            <p class="text-white">trọng đại</p>
+          </div>
+          <div class="flex items-start gap-5">
+            <div class="w-14">
+              <svg
+                class="w-full text-white flex-shrink-0"
+                fill="currentColor"
+                preserveAspectRatio="xMidYMid meet"
+                data-bbox="37.564 36 124.952 127.975"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="37.564 36 124.952 127.975"
+                role="presentation"
+                aria-hidden="true"
+              >
+                <g>
+                  <path
+                    d="M157 66.8C145.8 46 116.4 36 96.1 36c-20.3 0-38.4 12-45 21.2-6.6 9.2-10.3 20.1-12.5 31.2-2.5 13-1.7 44.1 16.5 60 19.5 17.1 40.7 17.1 58 14 25.2-4.5 42-29.5 47.5-54.4 2.9-13.8 3.1-28.8-3.6-41.2zm-22.3 27.6l-24.6 9c-.3 1.1-.8 2.1-1.5 3.1-1.8 2.4-4.7 3.9-7.8 3.9-1.1 0-2.2-.2-3.3-.6-3.5-1.2-6.2-4.3-6.9-7.8-.7-3 .3-6.1 2.6-8.3 1.4-1.4 3.3-2.3 5.2-2.7l16.7-38.2c.8-1.8 2.3-2.9 4.2-2.9 1.8 0 3.6 1 4.6 2.6 1 1.5 1.2 3.4.4 5.1l-15.9 36.3c.1.1.3.1.4.2l22.3-8.1c.5-.2 1.1-.3 1.6-.3 2.3 0 4.3 1.7 4.7 4 .3 2.2-.7 4-2.7 4.7z"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+
+            <div>
+              <p class="font-lobster text-6xl text-yellow-400">Thời gian</p>
+              <div class="w-5 h-[1px] bg-white my-4"></div>
+              <p class="text-white font-semibold">19:00 03 thg 2, 2023</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-5">
+            <div class="w-14">
+              <svg
+                class="w-10 mx-auto text-white flex-shrink-0"
+                fill="currentColor"
+                preserveAspectRatio="xMidYMid meet"
+                data-bbox="-544.637 531.472 91.241 139.028"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="-544.637 531.472 91.241 139.028"
+                role="presentation"
+                aria-hidden="true"
+              >
+                <g>
+                  <path
+                    d="M-471.7 593.9c-4 9.6-14.1 16.6-24.6 16.2-5.9-.2-11.6-2.7-16.4-6.1-3.8-2.7-7.2-6.1-9.4-10.3-6-11.5-2-26.7 8.3-35.5 10.2-8.8 31.7-2.3 37.9 6.1 6.3 8.4 8.2 20 4.2 29.6m18.3-14.6c.2-17.1-7.4-35.4-22.6-43.3-8.4-4.3-18.2-5.2-27.6-4.1-14.1 1.6-28.6 8-35.7 20.3-3.6 6.3-5 13.8-5.3 21.1-.6 18.8 6.1 37.3 15.9 53.3 9.8 16.1 26.1 37.2 35.3 43.9 7.6-7.2 18.7-26 26.1-42.1 7.1-15.6 13.7-31.9 13.9-49.1"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+
+            <div>
+              <p class="font-lobster text-6xl text-yellow-400">Địa điểm</p>
+              <div class="w-5 h-[1px] bg-white my-4"></div>
+              <p class="text-white font-semibold">
+                Nhà thờ Tân Đức, Số 99 Hai Bà Trưng, Cửa Nam, Hoàn Kiếm, Hà Nội
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="w-14"></div>
+            <button
+              class="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 transition-colors"
+            >
+              Thông tin chi tiết
+            </button>
+          </div>
+        </div>
       </section>
     </main>
     <script type="module" src="/src/main.ts"></script>

@@ -4,7 +4,9 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      heading: ["Pacifico"],
+      pacifico: ["Pacifico"],
+      arial: ["Arial"],
+      lobster: ["Lobster"],
     },
   },
   plugins: [],

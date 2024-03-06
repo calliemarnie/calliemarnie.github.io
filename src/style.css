@@ -7,10 +7,6 @@
   --cursor-size-inner: 1rem;
 }
 
-html {
-  /* cursor: none; */
-}
-
 #cursor {
   display: grid;
   place-content: center;

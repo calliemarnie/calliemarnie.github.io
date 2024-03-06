@@ -14,6 +14,7 @@
     <title>Calliemarnie</title>
   </head>
   <body>
+    <div id="tsparticles"></div>
     <audio id="audio" src="/src/assets/perfect.mp3"></audio>
     <div id="cursor">
       <div></div>
@@ -36,7 +37,7 @@
       <section
         class="h-screen flex flex-col items-center text-white select-none"
       >
-        <p class="font-pacifico text-4xl my-6">- 03.02.35 -</p>
+        <p class="font-pacifico text-4xl my-6">- <span id="date"></span> -</p>
         <h1 class="text-8xl font-pacifico hoverable">Hoàng & Hiền</h1>
         <div class="flex-grow"></div>
         <svg
@@ -65,14 +66,12 @@
 
       <section
         class="bg-auto bg-repeat py-20"
-        style="
-          background-image: url(/src/assets/effect.png);
-          background-color: #234070;
-          background-position: center center;
-        "
+        style="background-color: #234070"
       >
-        <div class="mx-auto max-w-[960px] font-arial space-y-5">
-          <div class="text-9xl font-bold uppercase">
+        <div
+          class="mx-auto md:max-w-[720px] lg:max-w-[840px] xl:max-w-[960px] font-arial space-y-5"
+        >
+          <div class="text-7xl xl:text-9xl font-bold uppercase">
             <p class="text-yellow-400">ngày</p>
             <p class="text-white">trọng đại</p>
           </div>
@@ -99,7 +98,7 @@
             <div>
               <p class="font-lobster text-6xl text-yellow-400">Thời gian</p>
               <div class="w-5 h-[1px] bg-white my-4"></div>
-              <p class="text-white font-semibold">19:00 03 thg 2, 2023</p>
+              <p id="time" class="text-white font-semibold"></p>
             </div>
           </div>
           <div class="flex items-start gap-5">
@@ -125,9 +124,7 @@
             <div>
               <p class="font-lobster text-6xl text-yellow-400">Địa điểm</p>
               <div class="w-5 h-[1px] bg-white my-4"></div>
-              <p class="text-white font-semibold">
-                Nhà thờ Tân Đức, Số 99 Hai Bà Trưng, Cửa Nam, Hoàn Kiếm, Hà Nội
-              </p>
+              <p id="place" class="text-white font-semibold"></p>
             </div>
           </div>
           <div class="flex gap-5">
@@ -140,7 +137,31 @@
           </div>
         </div>
       </section>
+      <section>
+        <iframe
+          id="location"
+          title="map"
+          width="100%"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
     </main>
     <script type="module" src="/src/main.ts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@3/tsparticles.preset.stars.bundle.min.js"></script>
+    <script>
+      tsParticles.load({
+        id: "tsparticles",
+        options: {
+          preset: "stars",
+          background: {
+            opacity: 0,
+          },
+        },
+      });
+    </script>
   </body>
 </html>

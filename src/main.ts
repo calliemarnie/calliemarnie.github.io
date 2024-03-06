@@ -29,22 +29,22 @@ window.addEventListener("DOMContentLoaded", function () {
       break;
   }
 
-  const cursor = document.getElementById("cursor")!;
-  const cursorSize = cursor.clientWidth;
-  if (!isMobile()) {
-    document.body.style.cursor = "none";
-    this.addEventListener("mousemove", function (e) {
-      const { clientX, clientY } = e;
+  // const cursor = document.getElementById("cursor")!;
+  // const cursorSize = cursor.clientWidth;
+  // if (!isMobile()) {
+  //   document.body.style.cursor = "none";
+  //   this.addEventListener("mousemove", function (e) {
+  //     const { clientX, clientY } = e;
 
-      gsap.to(cursor, {
-        x: clientX - cursorSize / 2,
-        y: clientY - cursorSize / 2,
-      });
-    });
-  } else {
-    document.removeChild(cursor);
-    document.body.style.cursor = "default";
-  }
+  //     gsap.to(cursor, {
+  //       x: clientX - cursorSize / 2,
+  //       y: clientY - cursorSize / 2,
+  //     });
+  //   });
+  // } else {
+  //   document.removeChild(cursor);
+  //   document.body.style.cursor = "default";
+  // }
 });
 
 function isMobile() {

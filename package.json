@@ -15,7 +15,5 @@
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
   },
-  "dependencies": {
-    "gsap": "^3.12.5"
-  }
+  "dependencies": {}
 }

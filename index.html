@@ -15,55 +15,60 @@
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calliemarnie</title>
-    <!-- Need to be preload -->
-  </head>
-  <body style="overflow: hidden">
-    <div
-      id="loading"
-      style="
+    <style>
+      #loading {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
         background-color: #66ceff;
+        z-index: 9998;
+      }
+
+      #tsparticles {
+        position: fixed;
         z-index: 9999;
-      "
-    >
+      }
+
+      #start-btn {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: calc(50% + 6rem);
+        padding: 0.5rem 2rem;
+        background: #fff;
+        outline: none;
+        border: none;
+        border-radius: 4px;
+        color: #66ceff;
+        text-transform: uppercase;
+        font-weight: 500;
+        transform: translate(-50%, -50%);
+        transition: background-color 0.1s ease;
+      }
+
+      #start-btn:hover {
+        background-color: #bdeaff;
+      }
+    </style>
+    <title>Calliemarnie</title>
+    <!-- Need to be preload -->
+  </head>
+  <body style="overflow: hidden">
+    <div id="loading">
       <img
         style="width: 100%; height: 100%; object-fit: scale-down"
         src="/src/assets/loading.gif"
         loading="eager"
         alt="Loading gif"
       />
-      <button
-        id="start-btn"
-        style="
-          display: none;
-          position: absolute;
-          left: 50%;
-          top: calc(50% + 6rem);
-          padding: 0.5rem 2rem;
-          background: #fff;
-          outline: none;
-          border: none;
-          border-radius: 4px;
-          color: #66ceff;
-          text-transform: uppercase;
-          font-weight: 500;
-          transform: translate(-50%, -50%);
-        "
-      >
-        Ready
-      </button>
+      <button id="start-btn">Ready</button>
     </div>
 
     <div id="tsparticles"></div>
     <audio id="audio" src="/perfect.mp3"></audio>
-    <!-- <div id="cursor">
-      <div></div>
-    </div> -->
+
     <main>
       <div class="fixed top-0 left-0 w-screen h-screen z-[-1]">
         <div
@@ -82,8 +87,39 @@
       <section
         class="h-screen flex flex-col items-center text-white select-none"
       >
-        <p class="font-pacifico text-4xl my-6">- <span id="date"></span> -</p>
-        <h1 class="text-8xl font-pacifico hoverable">Hoàng & Hiền</h1>
+        <div class="flex-grow md:flex-grow-0"></div>
+        <div class="text-center">
+          <p class="font-pacifico text-4xl my-6">- <span id="date"></span> -</p>
+          <div class="relative">
+            <span class="text-8xl font-pacifico"
+              >Hoàng <br class="inline md:hidden" />
+              & <br class="inline md:hidden" />
+              Hiền</span
+            >
+            <svg
+              class="absolute w-10 -top-[30px] -right-[42px] rotate-[324deg] text-white"
+              fill="currentColor"
+              preserveAspectRatio="xMidYMid meet"
+              data-bbox="77.441 49 45.164 102"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="77.441 49 45.164 102"
+              role="presentation"
+              aria-hidden="true"
+            >
+              <g>
+                <path
+                  d="M84.7 69.5c3.8-5.5 8.6-9.8 14.3-12.7 1.7-.9 2.6-2.8 2.1-4.7-.5-1.8-1.9-3.1-3.6-3.1-.6 0-1.2.2-1.8.5-7.2 3.7-13.1 8.8-17.5 15.2-.9 1.3-1 2.8-.3 4.2.7 1.4 2.2 2.3 3.7 2.3 1.3 0 2.4-.6 3.1-1.7z"
+                ></path>
+                <path
+                  d="M119.1 97.4c-8.4-1.3-16.8-1.4-25.2-.2-2.1.3-3.6 2.1-3.4 4.3.2 2.2 1.8 3.8 3.9 3.8h.6c7.7-1.1 15.3-1 23 .2.2 0 .5.1.7.1 2.1 0 3.7-1.6 3.9-3.7.1-2.4-1.3-4.2-3.5-4.5z"
+                ></path>
+                <path
+                  d="M85 134.8c-2.4-.5-4.5 1.2-4.7 3.6-.2 2.1 1.1 3.9 3.2 4.3 5.7 1 10.5 3.4 14.8 7.3.8.7 1.7 1 2.6 1 1.6 0 3.2-1.1 3.8-2.7.6-1.5.2-3.2-1.1-4.3-5.2-4.8-11.5-7.9-18.6-9.2z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+        </div>
         <div class="flex-grow"></div>
         <svg
           class="w-32"
@@ -222,7 +258,7 @@
             </p>
             <p class="text-white">dẫn</p>
           </div>
-          <div class="flex gap-10">
+          <div class="flex flex-wrap md:flex-nowrap gap-10">
             <div>
               <div class="flex items-end gap-5 h-12">
                 <svg

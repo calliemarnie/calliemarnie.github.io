@@ -79,3 +79,8 @@ button {
 button.loading {
   @apply pointer-events-none;
 }
+
+.toastify {
+  background: none;
+  @apply bg-sky-300 text-white;
+}

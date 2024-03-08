@@ -14,6 +14,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       #loading {
@@ -176,15 +181,15 @@
         class="bg-auto bg-repeat py-20"
         style="background-color: #234070"
       >
-        <div class="section font-arial space-y-5">
-          <div class="text-7xl xl:text-9xl font-bold uppercase">
+        <div class="section font-arial space-y-10">
+          <div class="text-5xl md:text-7xl xl:text-8xl font-bold uppercase">
             <p class="text-yellow-400">ngày</p>
             <p class="text-white">trọng đại</p>
           </div>
           <div class="flex items-start gap-5">
-            <div class="w-14">
+            <div class="w-14 flex-shrink-0">
               <svg
-                class="w-full text-white flex-shrink-0"
+                class="w-full text-white"
                 fill="currentColor"
                 preserveAspectRatio="xMidYMid meet"
                 data-bbox="37.564 36 124.952 127.975"
@@ -202,15 +207,17 @@
             </div>
 
             <div>
-              <p class="font-lobster text-6xl text-yellow-400">Thời gian</p>
+              <p class="font-lobster text-3xl md:text-6xl text-yellow-400">
+                Thời gian
+              </p>
               <div class="w-5 h-[1px] bg-white my-4"></div>
               <p id="time" class="text-white font-semibold"></p>
             </div>
           </div>
           <div class="flex items-start gap-5">
-            <div class="w-14">
+            <div class="w-14 flex-shrink-0">
               <svg
-                class="w-10 mx-auto text-white flex-shrink-0"
+                class="w-10 mx-auto text-white"
                 fill="currentColor"
                 preserveAspectRatio="xMidYMid meet"
                 data-bbox="-544.637 531.472 91.241 139.028"
@@ -228,7 +235,9 @@
             </div>
 
             <div>
-              <p class="font-lobster text-6xl text-yellow-400">Địa điểm</p>
+              <p class="font-lobster text-3xl md:text-6xl text-yellow-400">
+                Địa điểm
+              </p>
               <div class="w-5 h-[1px] bg-white my-4"></div>
               <p id="place" class="text-white font-semibold"></p>
             </div>
@@ -257,7 +266,7 @@
       </section>
       <section class="py-20 bg-yellow-400">
         <div class="section space-y-5 font-arial">
-          <div class="text-8xl font-bold uppercase">
+          <div class="text-5xl md:text-7xl xl:text-8xl font-bold uppercase">
             <p class="relative text-fuchsia-900">
               <svg
                 class="absolute w-16 -top-[57px] -left-[57px] rotate-[212deg] text-white"
@@ -383,7 +392,7 @@
       <section class="bg-sky-300 py-20">
         <div class="section flex flex-col items-center gap-5">
           <div
-            class="relative uppercase text-center text-8xl font-arial font-bold"
+            class="relative uppercase text-center text-5xl md:text-7xl xl:text-8xl font-arial font-bold"
           >
             <svg
               class="absolute w-10 -top-[45px] -left-[45px] rotate-[220deg] text-white"
@@ -435,19 +444,19 @@
             và cho người dùng biết thêm về bạn.
           </p>
 
-          <div class="flex gap-10">
+          <div class="flex gap-10 flex-wrap md:flex-nowrap">
             <img
-              class="w-56 object-contain"
+              class="w-56 mx-auto object-contain"
               src="https://static.wixstatic.com/media/ca2a5a_217bdd1b833f4634859f5dfa065fb4f9.png/v1/fill/w_236,h_98,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ca2a5a_217bdd1b833f4634859f5dfa065fb4f9.png"
               alt=""
             />
             <img
-              class="w-56 object-contain"
+              class="w-56 mx-auto object-contain"
               src="https://static.wixstatic.com/media/ca2a5a_e331ac76efbd4adfbcfafe9b3bc50619.png/v1/fill/w_206,h_116,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ca2a5a_e331ac76efbd4adfbcfafe9b3bc50619.png"
               alt=""
             />
             <img
-              class="w-56 object-contain"
+              class="w-56 mx-auto object-contain"
               src="https://static.wixstatic.com/media/ca2a5a_ab7bca15b0cf4cc4b15e12ed18354b4b.png/v1/fill/w_190,h_165,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ca2a5a_ab7bca15b0cf4cc4b15e12ed18354b4b.png"
               alt=""
             />
@@ -457,7 +466,7 @@
       <section class="py-20 bg-[#234070]">
         <div class="section text-center space-y-10">
           <div
-            class="relative inline-block uppercase text-center text-8xl font-arial font-bold text-white"
+            class="relative inline-block uppercase text-center text-5xl md:text-7xl xl:text-8xl font-arial font-bold text-white"
           >
             <svg
               class="absolute w-10 -top-[45px] -left-[45px] rotate-[220deg] text-white"
@@ -534,12 +543,19 @@
             <button
               class="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 transition-colors"
             >
-              Chi tiết
+              Tôi sẽ tham dự
             </button>
           </form>
         </div>
       </section>
     </main>
+    <footer class="text-center bg-white font-lobster text-sm text-fuchsia-900">
+      By Kyle with love &lt;3
+    </footer>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
     <script src="https://www.google.com/recaptcha/api.js?render=6LdylJEpAAAAAEoKHoiZuqXdNzm73aASn8at_-oc"></script>
     <script type="module" src="/src/main.ts"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>

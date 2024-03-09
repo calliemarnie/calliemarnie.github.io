@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const hash = window.location.hash;
   if (!hash) {
     window.location.href = "/#17";
+    window.location.reload();
     return;
   }
   const hashString = hash.slice(1);
@@ -67,7 +68,7 @@ window.addEventListener("DOMContentLoaded", function () {
     });
   };
 
-  const form = document.getElementById("form")!;
+  const form = document.getElementById("form")! as HTMLFormElement;
   form.onsubmit = async (e: SubmitEvent) => {
     e.preventDefault();
     if (!e.submitter) {
@@ -82,6 +83,8 @@ window.addEventListener("DOMContentLoaded", function () {
     const name = data.get("name") as string;
     const phoneNumber = data.get("phoneNumber") as string;
     await submit({ name, phoneNumber });
+    // Cleaning up the form
+    form.reset();
     e.submitter.classList.remove("loading");
     e.submitter.removeAttribute("disabled");
     e.submitter.removeChild(spinner);

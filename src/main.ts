@@ -2,7 +2,16 @@ import "./style.css";
 
 var grecaptcha: any = (window as any).grecaptcha ?? {};
 var Toastify: any = (window as any).Toastify ?? {};
-
+Object.defineProperty(HTMLMediaElement.prototype, "playing", {
+  get: function () {
+    return !!(
+      this.currentTime > 0 &&
+      !this.paused &&
+      !this.ended &&
+      this.readyState > 2
+    );
+  },
+});
 window.addEventListener("DOMContentLoaded", function () {
   const hash = window.location.hash;
   if (!hash) {
@@ -20,7 +29,7 @@ window.addEventListener("DOMContentLoaded", function () {
     case "#17":
       date1.innerText = "- 17.05.2024 -";
       date2.innerText = "- 17.05.2024 -";
-      time.innerText = "19:00 17 tháng 5 năm 2024";
+      time.innerText = "17:30 17 tháng 5 năm 2024";
       place.innerText =
         "Hôtel Colline, Số 10 Phan Bội Châu, Phường 1, TP.Đà Lạt";
       location.src =
@@ -29,7 +38,7 @@ window.addEventListener("DOMContentLoaded", function () {
     case "#18":
       date1.innerText = "- 18.05.2024 -";
       date2.innerText = "- 18.05.2024 -";
-      time.innerText = "11:00 18 tháng 5 năm 2024";
+      time.innerText = "11:30 18 tháng 5 năm 2024";
       place.innerText =
         "Restaurant Garden Palace, Số 01 Cô Giang, Phường 9, TP.Đà Lạt";
       location.src =

@@ -12,10 +12,6 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link
-      rel="stylesheet"
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
@@ -30,7 +26,24 @@
         z-index: 9998;
         background-image: url("src/assets/loading.jpg");
         background-size: cover;
-        background-position: center 10%;
+        background-position: 35% 10%;
+      }
+
+      #start-btn {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        padding: 0.5rem 2rem;
+        background: #fff;
+        outline: none;
+        border: none;
+        border-radius: 4px;
+        color: #530515;
+        text-transform: uppercase;
+        font-weight: 500;
+        transform: translate(-50%, -50%);
+        transition: background-color 0.1s ease;
       }
 
       #tsparticles {
@@ -42,13 +55,11 @@
     <!-- Need to be preload -->
   </head>
   <body>
-    <div id="loading"></div>
+    <div id="loading">
+      <button id="start-btn">Bắt đầu</button>
+    </div>
     <div id="tsparticles"></div>
-    <iframe src="/silence.mp3" allow="autoplay" style="display: none"></iframe>
-    <audio autoplay loop>
-      <source src="/perfect.mp3" type="audio/mp3" />
-    </audio>
-    <main class="h-screen overflow-y-auto snap-y">
+    <main class="h-screen overflow-x-hidden overflow-y-auto snap-y">
       <div class="fixed top-0 left-0 w-screen h-screen z-[-1]">
         <div
           class="absolute top-0 left-0 w-full h-full z-[1]"
@@ -70,7 +81,7 @@
               class="relative text-[#530515] font-pacifico font-medium text-4xl my-16 z-[1]"
             ></div>
             <svg
-              class="w-96 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[calc(50%-0.8rem)] text-white"
+              class="w-80 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[calc(50%-0.8rem)] text-white"
               fill="currentColor"
               preserveAspectRatio="xMidYMid meet"
               data-bbox="7.997 82.622 184.047 34.678"
@@ -230,20 +241,14 @@
           height="640"
           style="border: 0"
           allowfullscreen=""
-          loading="eager"
+          loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
       </section>
 
       <!-- Gallery section -->
       <section class="snap-center bg-white">
-        <video
-          class="max-h-screen w-full max-w-full"
-          preload="auto"
-          loop
-          muted
-          autoplay
-        >
+        <video id="video" class="max-h-screen w-full max-w-full" loop>
           <source src="src/assets/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -290,7 +295,7 @@
                 class="relative text-[#530515] font-pacifico font-medium text-4xl z-[1]"
               ></div>
               <svg
-                class="w-96 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[calc(50%-0.8rem)] text-white"
+                class="w-80 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[calc(50%-0.8rem)] text-white"
                 fill="currentColor"
                 preserveAspectRatio="xMidYMid meet"
                 data-bbox="7.997 82.622 184.047 34.678"
@@ -317,8 +322,10 @@
             id="form"
             class="!mt-20 text-start font-lobster space-y-5 md:text-xl"
           >
-            <div class="bg-white rounded p-3 flex items-center gap-3">
-              <label for="name"> Tên của Quý Khách </label>
+            <div class="bg-white rounded p-4 flex items-center gap-3">
+              <label for="name" class="flex-shrink-0">
+                Tên của Quý Khách
+              </label>
               <input
                 id="name"
                 class="input flex-grow"
@@ -328,7 +335,7 @@
                 maxlength="128"
               />
             </div>
-            <div class="bg-white rounded p-3">
+            <div class="bg-white rounded p-4">
               <label>Quý khách là?</label>
               <div class="flex flex-col">
                 <label for="guess_type_1">
@@ -388,7 +395,7 @@
                 </label>
               </div>
             </div>
-            <div class="bg-white rounded p-3">
+            <div class="bg-white rounded p-4">
               <label>Quý khách sẽ tham dự tiệc cưới tại Đà Lạt chứ?</label>
               <div class="flex flex-col">
                 <label for="is_attending_1">
@@ -412,7 +419,7 @@
                 </label>
               </div>
             </div>
-            <div class="bg-white rounded p-3">
+            <div class="bg-white rounded p-4">
               <label>Quý khách có yêu cầu gì về thực đơn?</label>
               <div class="flex flex-col">
                 <label for="is_vegetarian_1">
@@ -453,18 +460,28 @@
     <script type="module" src="/src/main.ts"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@3/tsparticles.preset.stars.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
       const gsap = window.gsap ?? {};
       window.addEventListener("load", (event) => {
         window.scrollTo(0, 0);
-        gsap.to("#loading", {
-          opacity: 0,
-          onComplete() {
-            document.getElementById("loading")?.remove();
-            document.body.style.overflow = "auto";
-          },
-        });
+        const startBtn = document.getElementById("start-btn");
+        gsap.fromTo(
+          startBtn,
+          { opacity: 0, scale: 0 },
+          { opacity: 1, scale: 1 }
+        );
+
+        startBtn.style.display = "block";
+        startBtn.onclick = () => {
+          gsap.to("#loading", {
+            opacity: 0,
+            onComplete() {
+              document.getElementById("loading")?.remove();
+              const video = document.getElementById("video");
+              video?.play();
+            },
+          });
+        };
       });
 
       tsParticles.load({
@@ -474,18 +491,6 @@
           background: {
             opacity: 0,
           },
-        },
-      });
-      var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 1,
-        loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
         },
       });
     </script>

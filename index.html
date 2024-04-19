@@ -27,77 +27,47 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: #66ceff;
         z-index: 9998;
+        background-image: url("src/assets/loading.jpg");
+        background-size: cover;
+        background-position: center 10%;
       }
 
       #tsparticles {
         position: fixed;
         z-index: 9999;
       }
-
-      #start-btn {
-        display: none;
-        position: absolute;
-        left: 50%;
-        top: calc(50% + 6rem);
-        padding: 0.5rem 2rem;
-        background: #fff;
-        outline: none;
-        border: none;
-        border-radius: 4px;
-        color: #66ceff;
-        text-transform: uppercase;
-        font-weight: 500;
-        transform: translate(-50%, -50%);
-        transition: background-color 0.1s ease;
-      }
-
-      #start-btn:hover {
-        background-color: #bdeaff;
-      }
     </style>
     <title>Calliemarnie</title>
     <!-- Need to be preload -->
   </head>
-  <body style="overflow: hidden">
-    <div id="loading">
-      <img
-        style="width: 100%; height: 100%; object-fit: scale-down"
-        src="/src/assets/loading.gif"
-        loading="eager"
-        alt="Loading gif"
-      />
-      <button id="start-btn">Ready</button>
-    </div>
-
+  <body>
+    <div id="loading"></div>
     <div id="tsparticles"></div>
-    <audio id="audio" src="/perfect.mp3"></audio>
-
-    <main>
+    <iframe src="/silence.mp3" allow="autoplay" style="display: none"></iframe>
+    <audio autoplay loop>
+      <source src="/perfect.mp3" type="audio/mp3" />
+    </audio>
+    <main class="h-screen overflow-y-auto snap-y">
       <div class="fixed top-0 left-0 w-screen h-screen z-[-1]">
         <div
-          class="absolute top-0 left-0 w-full h-full z-[1] blur-md"
+          class="absolute top-0 left-0 w-full h-full z-[1]"
           style="
-            background: url(/src/assets/background.webp) no-repeat center;
+            background: url(/src/assets/background.jpg) no-repeat;
             background-size: cover;
+            background-position: center 60%;
           "
         ></div>
-        <img
-          class="absolute h-full top-0 left-1/2 -translate-x-1/2 object-contain z-[2]"
-          src="/src/assets/background.webp"
-        />
       </div>
 
       <section
-        class="h-screen flex flex-col items-center text-white select-none"
+        class="snap-center h-screen flex flex-col items-center text-white select-none"
       >
-        <div class="flex-grow md:flex-grow-0"></div>
         <div class="text-center">
           <div class="relative">
             <div
               id="date1"
-              class="relative text-[#bcbbb6] font-pacifico font-medium text-4xl my-16 z-[1]"
+              class="relative text-[#530515] font-pacifico font-medium text-4xl my-16 z-[1]"
             ></div>
             <svg
               class="w-96 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[calc(50%-0.8rem)] text-white"
@@ -123,7 +93,7 @@
             </svg>
           </div>
           <div class="relative">
-            <span class="text-8xl font-pacifico"
+            <span class="text-8xl text-[#530515] font-pacifico"
               >Hoàng <br class="inline md:hidden" />
               & <br class="inline md:hidden" />
               Hiền</span
@@ -178,8 +148,8 @@
       </section>
 
       <section
-        class="bg-auto bg-repeat py-20"
-        style="background-color: #234070"
+        class="snap-center bg-auto bg-repeat py-20"
+        style="background-color: #530515"
       >
         <div class="section font-arial space-y-10">
           <div class="text-5xl md:text-7xl xl:text-8xl font-bold uppercase">
@@ -252,218 +222,34 @@
           </div>
         </div>
       </section>
-      <section>
+      <section class="snap-center">
         <iframe
           id="location"
           title="map"
           width="100%"
-          height="450"
+          height="640"
           style="border: 0"
           allowfullscreen=""
-          loading="lazy"
+          loading="eager"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
       </section>
-      <section class="py-20 bg-yellow-400">
-        <div class="section space-y-5 font-arial">
-          <div class="text-5xl md:text-7xl xl:text-8xl font-bold uppercase">
-            <p class="relative text-fuchsia-900">
-              <svg
-                class="absolute w-16 -top-[57px] -left-[57px] rotate-[212deg] text-white"
-                fill="currentColor"
-                preserveAspectRatio="xMidYMid meet"
-                data-bbox="77.441 49 45.164 102"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="77.441 49 45.164 102"
-                role="presentation"
-                aria-hidden="true"
-              >
-                <g>
-                  <path
-                    d="M84.7 69.5c3.8-5.5 8.6-9.8 14.3-12.7 1.7-.9 2.6-2.8 2.1-4.7-.5-1.8-1.9-3.1-3.6-3.1-.6 0-1.2.2-1.8.5-7.2 3.7-13.1 8.8-17.5 15.2-.9 1.3-1 2.8-.3 4.2.7 1.4 2.2 2.3 3.7 2.3 1.3 0 2.4-.6 3.1-1.7z"
-                  ></path>
-                  <path
-                    d="M119.1 97.4c-8.4-1.3-16.8-1.4-25.2-.2-2.1.3-3.6 2.1-3.4 4.3.2 2.2 1.8 3.8 3.9 3.8h.6c7.7-1.1 15.3-1 23 .2.2 0 .5.1.7.1 2.1 0 3.7-1.6 3.9-3.7.1-2.4-1.3-4.2-3.5-4.5z"
-                  ></path>
-                  <path
-                    d="M85 134.8c-2.4-.5-4.5 1.2-4.7 3.6-.2 2.1 1.1 3.9 3.2 4.3 5.7 1 10.5 3.4 14.8 7.3.8.7 1.7 1 2.6 1 1.6 0 3.2-1.1 3.8-2.7.6-1.5.2-3.2-1.1-4.3-5.2-4.8-11.5-7.9-18.6-9.2z"
-                  ></path>
-                </g>
-              </svg>
-              chỉ
-            </p>
-            <p class="text-white">dẫn</p>
-          </div>
-          <div class="flex flex-wrap md:flex-nowrap gap-10">
-            <div>
-              <div class="flex items-end gap-5 h-12">
-                <svg
-                  class="w-16 text-white"
-                  fill="currentColor"
-                  preserveAspectRatio="xMidYMid meet"
-                  data-bbox="22.586 53.54 155.014 92.923"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="22.586 53.54 155.014 92.923"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <g>
-                    <path
-                      d="M172.7 96.5c-4.2-4.3-11.7-3.3-17.8-2-.9-13.7.2-29.7-13.2-37.3-6.2-3.6-13.8-3.5-20.8-3.6-12.7-.2-25.5.1-38.2.9-10.5.7-20.9 1.8-31.2 3.8-7.4 1.5-21.2 2.6-26.6 8.7-4.4 5-1.3 14.6-.6 20.5 1.4 13.5 2.9 26.9 4.3 40.4.2 2 1.5 3.2 3.1 3.7.7.9 1.7 1.6 3.2 1.7 3.5.1 6.9.1 10.4.2 0-3.4.6-6.9 2-9.9 1.8-4.7 5.5-8.4 10.3-10.4 1.8-.8 3.8-1.2 5.9-1.5 3.1-.6 6.3-.3 9 .8 6.9 2 12.1 7 14.1 13.4.7 2.3 1 4.7.8 7.1 10.8-.4 21.5-1 32.2-1.8-1.3-3.6-1.3-7.4.1-10.9 2.6-6.9 9.8-12.6 18.5-14.5 1.2-.3 2.4-.2 3.6.1 2.2-.2 4.4 0 6.4.5 5.9 1.5 10.4 5.4 12.7 11 1.2 2.9 1.6 6.1 1.5 9.3 4.1-.5 8.1-1.1 12.2-1.7 1.7-.3 3-2.3 3-4-.1-7.2.5-19.1-4.9-24.5zM51.1 98.7c-3.3 1.2-7.3 1.6-11.1 2.1-1.9-7.3-3.1-14.7-3.7-22.2 3.6-1.4 7.4-3 11-3.7 3.6-.7 3.9-.5 5.4 3 .9 2 1.3 4.7 1.8 6.8 1.4 5.8 3.8 11.2-3.4 14zm30.5-6.3c-3.3.5-7.3 1.2-10.8 1.2-1.2-3-1.7-6.8-2.5-9.5-1-3.3-2.9-7.4-2.7-10.9.1-1.5-.6-2.6-1.5-3.3 1.5-2.8 11.3-3.1 12.7-2.8 6.4 1.3 5.9 8.1 6.6 13.2.3 2.3.6 4.5.9 6.8.4 3.9 1.3 4.7-2.7 5.3zm32.9-2.1c-1 .7-8 .4-9.7.5-4.4.4-5.4 1.5-6.6-3.2-1.6-6.5-2.7-13-3.4-19.7 6.7-1.7 15.8-3.5 18.5 3.5 1.3 3.4 1.6 7.2 1.6 10.8 0 1.7.1 7.8-.4 8.1zm27.3-.8c-2 1-6.7-.3-9.1.1-1.8.3-3.4 1-5.2 1.3-.7.1-1.1.3-1.3.5.1-.2.1-.5 0-1.1-.6-4.4-.2-9.2-.3-13.6-.1-4-1.7-10.7 3.1-11.8 3.4.5 6.6 1.6 9 3.9 3.7 3.3 8.8 18.2 3.8 20.7zm12.2 30.6c1.9 4.7 1.2 10.9-1.8 15.8-2.1 3.4-4.9 5.1-8.5 5.1-5.2 0-11.5-3.6-15.4-8.8-2.4-3.2-3-6.5-1.9-9.7 1.7-4.6 7-8.5 13.3-9.9l.9.4 1-.1c1.6-.2 3.3-.1 4.7.3 3.7 1.1 6.3 3.4 7.7 6.9zm-75.4 8.2c1.8 6-1.4 11.3-5 14.3l-.5.5c-1.8 2.2-4.8 3.4-7.7 3.3h-.6c-3.9.4-7-1.1-9.1-4.4-2.7-4.2-3.1-10.7-1-15.3l.1-.3c1-2.6 3-4.6 5.8-5.8 1.1-.5 2.4-.8 3.8-.9l.5-.1c.6-.1 1.1-.2 1.7-.2 1 0 1.9.2 2.8.6l.5.2c4.3 1.3 7.5 4.3 8.7 8.1z"
-                    ></path>
-                  </g>
-                </svg>
-                <p class="text-fuchsia-900 font-bold font-pacifico text-4xl">
-                  Phương tiện
-                </p>
-              </div>
-              <p class="mt-5 font-medium text-lg text-white">
-                Tôi là đoạn văn. Nhấp vào đây để thêm văn bản và chỉnh sửa. Tôi
-                là nơi tuyệt vời để bạn kể một câu chuyện và cho người dùng biết
-                thêm về bạn.
-              </p>
-            </div>
-            <div>
-              <div class="flex items-end gap-5 h-12">
-                <svg
-                  class="w-16 text-white"
-                  fill="currentColor"
-                  preserveAspectRatio="xMidYMid meet"
-                  data-bbox="22.522 38.92 154.95 122.21"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="22.522 38.92 154.95 122.21"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <g>
-                    <path
-                      d="M47.9 121.3c-6.6-13.6-7.4-29.6-7.4-29.6s5.3 5.2 12.5 20.1c7.2 15 7.9 28.5 7.9 28.5s-6.4-5.4-13-19M167.2 103c-2.5-20.2-7.4-41.2-25.5-53 1.7-4 2.2-9-3-10.7-5.4-1.7-8.8 2.6-10.7 6.9-16.8-4.1-34.7-4.3-49.9 1.2l-.9.3c-8 3-15.2 7.6-21.1 13.9-6.3 4.6-12.3 9.5-18.2 14.7-4.8-2.5-12.4-5.2-14.8 1.1C20.6 83.9 26.7 87 32 88c-.5 21.3 10.4 37.1 20.4 55.3 2 3.7 1.3 7.5 1.8 11.4.1.8-.1 1.5.2 2.4.5 1.8 1.4 3.5 3.5 3.9 5.4 1.2 11-6.2 13.8-10.7 13.4 1.9 25.8-2.5 38.1-7.5 13.5-5.5 26.5-12 38.9-19.5 5.4-3.3 11.1-9.2 17.6-8.4 3.5.4 7 2.3 9.7-1.2 4.8-6.7-3.2-10.2-8.8-10.7"
-                    ></path>
-                  </g>
-                </svg>
-                <p class="text-fuchsia-900 font-bold font-pacifico text-4xl">
-                  Nơi ở
-                </p>
-              </div>
-              <p class="mt-5 font-medium text-lg text-white">
-                Tôi là đoạn văn. Nhấp vào đây để thêm văn bản và chỉnh sửa. Tôi
-                là nơi tuyệt vời để bạn kể một câu chuyện và cho người dùng biết
-                thêm về bạn.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+
       <!-- Gallery section -->
-      <section class="h-[780px]">
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img
-                src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt=""
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="https://images.unsplash.com/photo-1519379169146-d4b170447caa?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt=""
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt=""
-              />
-            </div>
-          </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-pagination"></div>
-        </div>
+      <section class="snap-center bg-white">
+        <video
+          class="max-h-screen w-full max-w-full"
+          preload="auto"
+          loop
+          muted
+          autoplay
+        >
+          <source src="src/assets/video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </section>
 
-      <!-- Gift section -->
-      <section class="bg-sky-300 py-20">
-        <div class="section flex flex-col items-center gap-5">
-          <div
-            class="relative uppercase text-center text-5xl md:text-7xl xl:text-8xl font-arial font-bold"
-          >
-            <svg
-              class="absolute w-10 -top-[45px] -left-[45px] rotate-[220deg] text-white"
-              fill="currentColor"
-              preserveAspectRatio="xMidYMid meet"
-              data-bbox="77.441 49 45.164 102"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="77.441 49 45.164 102"
-              role="presentation"
-              aria-hidden="true"
-            >
-              <g>
-                <path
-                  d="M84.7 69.5c3.8-5.5 8.6-9.8 14.3-12.7 1.7-.9 2.6-2.8 2.1-4.7-.5-1.8-1.9-3.1-3.6-3.1-.6 0-1.2.2-1.8.5-7.2 3.7-13.1 8.8-17.5 15.2-.9 1.3-1 2.8-.3 4.2.7 1.4 2.2 2.3 3.7 2.3 1.3 0 2.4-.6 3.1-1.7z"
-                ></path>
-                <path
-                  d="M119.1 97.4c-8.4-1.3-16.8-1.4-25.2-.2-2.1.3-3.6 2.1-3.4 4.3.2 2.2 1.8 3.8 3.9 3.8h.6c7.7-1.1 15.3-1 23 .2.2 0 .5.1.7.1 2.1 0 3.7-1.6 3.9-3.7.1-2.4-1.3-4.2-3.5-4.5z"
-                ></path>
-                <path
-                  d="M85 134.8c-2.4-.5-4.5 1.2-4.7 3.6-.2 2.1 1.1 3.9 3.2 4.3 5.7 1 10.5 3.4 14.8 7.3.8.7 1.7 1 2.6 1 1.6 0 3.2-1.1 3.8-2.7.6-1.5.2-3.2-1.1-4.3-5.2-4.8-11.5-7.9-18.6-9.2z"
-                ></path>
-              </g>
-            </svg>
-            <span class="text-white">quà</span>
-            <span class="text-fuchsia-900">cưới</span>
-          </div>
-          <svg
-            class="w-16 text-white"
-            fill="currentColor"
-            preserveAspectRatio="xMidYMid meet"
-            data-bbox="48.5 36.067 103 127.906"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="48.5 36.067 103 127.906"
-            role="presentation"
-            aria-hidden="true"
-          >
-            <g>
-              <path
-                d="M151.5 93.6c0 .7-.5 1.4-1.1 1.5-33 7.1-67-2.8-99.9 5.3-.9.2-2-.5-2-1.5.2-5.1.4-10.3.5-15.4.1-1.8-.4-4.2 1.5-5.1.4-.2.8-.2 1.2-.1 6.8-1.7 14.1-2.2 21.1-2.5 8.4-.4 16.7-.6 25.1-1.2 4.3-.3 8.3.6 12.6 1 3.7.3 7.4-.1 11.1-.5 8.9-.9 18.1.8 26.8-1.5 1.1-.3 1.8.5 2 1.5.7 6 1.1 12.2 1.1 18.5zm-5.5 7.3c0-.8-.7-1.6-1.5-1.6-7.4 0-14.8 1-22.2 1.4-7.4.4-14.8.2-22.3-.2-7.1-.4-14.2-.8-21.3-.8-3.8 0-7.7.2-11.5.5-4 .4-8.7 1.8-12.6 1.4-.8-.4-1.9.3-2.1 1.2-.1.5-.1 1 .2 1.3.2.9-.4 2.7-.5 3.5-.3 2.6-.6 5.2-.9 7.9-.4 4.9-.7 9.9-.8 14.8-.2 10.2.4 20.4 1.7 30.5.1.8.6 1.6 1.5 1.6 3.9-.2 7.5.8 11.4 1.3 3.6.5 7.2.2 10.8 0 7.6-.5 15.2-.8 22.9-1 15.1-.3 30.1-.5 45.1-2.7.6-.1 1.2-.9 1.1-1.5-1.2-19.2 1.6-38.4 1-57.6zM73.9 60.7c-2.7-3.8-4.6-8.6-3.9-13.3.7-4.7 4.2-9.1 8.9-9.7 5.4-.7 10 3.6 13.3 8 3.2 4.2 5.8 8.8 7.8 13.7-.1-3.8 1.5-7.6 3.7-10.7 2.2-3.1 5.1-5.7 8-8.1 1.9-1.6 4-3.2 6.3-4 2.4-.8 5.1-.8 7.2.7 1.8 1.3 2.8 3.4 3.5 5.6 1 3 1.8 6.1 1.2 9.2-.7 3.8-3.4 6.9-6.2 9.4-8.1 7.1-18.7 11.1-29.4 11l.5.2c-8.3-.8-16.1-5.2-20.9-12zm32 3c1.1.1 2.2-.2 3.2-.7 2.9-1.2 5.6-3 7.9-5.2 1.3-1.2 2.4-2.5 3.1-4.2.7-1.6.8-3.5 0-5.1-.3-.6-.8-1.2-1.4-1.5-.7-.3-1.5-.3-2.3-.2-2 .3-3.9 1.5-5.3 3s-2.5 3.3-3.3 5.2c-1.2 2.8-2.1 5.7-1.9 8.7zm-25.3-5.6c1.2 1.8 3 3.3 4.9 4.4 2.8 1.6 6.1 2.6 9.1 1.6-.2.1-.4.1-.6.2h.8C92.2 59 88.7 54.2 84.5 50c-.5-.5-1.1-1-1.7-1.2-1.6-.4-3.1 1.2-3.5 2.9-.5 2.2.1 4.6 1.3 6.4z"
-              ></path>
-            </g>
-          </svg>
-          <p
-            class="text-center font-arial font-medium text-white text-lg max-w-3xl"
-          >
-            Tôi là đoạn văn. Nhấp vào đây để thêm văn bản và chỉnh sửa. Dễ thôi.
-            Chỉ cần nhấp vào “Chỉnh sửa văn bản” hoặc nhấp đúp để thêm nội dung
-            và thay đổi phông chữ. Tôi là nơi tuyệt vời để bạn kể một câu chuyện
-            và cho người dùng biết thêm về bạn.
-          </p>
-
-          <div class="flex gap-10 flex-wrap md:flex-nowrap">
-            <img
-              class="w-56 mx-auto object-contain"
-              src="https://static.wixstatic.com/media/ca2a5a_217bdd1b833f4634859f5dfa065fb4f9.png/v1/fill/w_236,h_98,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ca2a5a_217bdd1b833f4634859f5dfa065fb4f9.png"
-              alt=""
-            />
-            <img
-              class="w-56 mx-auto object-contain"
-              src="https://static.wixstatic.com/media/ca2a5a_e331ac76efbd4adfbcfafe9b3bc50619.png/v1/fill/w_206,h_116,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ca2a5a_e331ac76efbd4adfbcfafe9b3bc50619.png"
-              alt=""
-            />
-            <img
-              class="w-56 mx-auto object-contain"
-              src="https://static.wixstatic.com/media/ca2a5a_ab7bca15b0cf4cc4b15e12ed18354b4b.png/v1/fill/w_190,h_165,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ca2a5a_ab7bca15b0cf4cc4b15e12ed18354b4b.png"
-              alt=""
-            />
-          </div>
-        </div>
-      </section>
-      <section class="py-20 bg-[#234070]">
+      <section class="snap-center py-20 bg-[#530515]">
         <div class="section text-center space-y-10">
           <div
             class="relative inline-block uppercase text-center text-5xl md:text-7xl xl:text-8xl font-arial font-bold text-white"
@@ -490,7 +276,7 @@
                 ></path>
               </g>
             </svg>
-            xác nhận
+            vài câu hỏi nhỏ
           </div>
           <div>
             <span class="text-white font-arial font-medium text-lg max-w-3xl">
@@ -501,7 +287,7 @@
             <div class="relative">
               <div
                 id="date2"
-                class="relative text-[#234070] font-pacifico font-medium text-4xl z-[1]"
+                class="relative text-[#530515] font-pacifico font-medium text-4xl z-[1]"
               ></div>
               <svg
                 class="w-96 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[calc(50%-0.8rem)] text-white"
@@ -527,35 +313,135 @@
               </svg>
             </div>
           </div>
-          <form id="form" class="!mt-20 flex flex-wrap gap-5 justify-center">
-            <input
-              class="input"
-              type="text"
-              name="name"
-              required
-              maxlength="128"
-              placeholder="Tên của bạn"
-            />
-            <input
-              class="input"
-              type="text"
-              required
-              name="phoneNumber"
-              maxlength="13"
-              placeholder="Số điện thoại"
-            />
+          <form id="form" class="!mt-20 text-start font-lobster space-y-5">
+            <div class="bg-white rounded p-3 flex items-center gap-3">
+              <label for="name"> Tên của Quý Khách </label>
+              <input
+                id="name"
+                class="input flex-grow"
+                type="text"
+                name="name"
+                required
+                maxlength="128"
+              />
+            </div>
+            <div class="bg-white rounded p-3">
+              <label>Quý khách là?</label>
+              <div class="flex flex-col">
+                <label for="guess_type_1">
+                  <input
+                    type="radio"
+                    id="guess_type_1"
+                    name="guess_type"
+                    value="friend_of_groom"
+                    required
+                  />
+                  Bạn của chú rể
+                </label>
+                <label for="guess_type_2">
+                  <input
+                    type="radio"
+                    id="guess_type_2"
+                    name="guess_type"
+                    value="friend_of_bride"
+                  />
+                  Bạn của cô dâu
+                </label>
+                <label for="guess_type_3">
+                  <input
+                    type="radio"
+                    id="guess_type_3"
+                    name="guess_type"
+                    value="groom_family"
+                  />
+                  Gia đình chú rể
+                </label>
+                <label for="guess_type_4">
+                  <input
+                    type="radio"
+                    id="guess_type_4"
+                    name="guess_type"
+                    value="bride_family"
+                  />
+                  Gia đình cô dâu
+                </label>
+                <label for="guess_type_5">
+                  <input
+                    type="radio"
+                    id="guess_type_5"
+                    name="guess_type"
+                    value="friend_of_groom_family"
+                  />
+                  Bạn của gia đình chú rể
+                </label>
+                <label for="guess_type_6">
+                  <input
+                    type="radio"
+                    id="guess_type_6"
+                    name="guess_type"
+                    value="friend_of_bride_family"
+                  />
+                  Bạn của gia đình cô dâu
+                </label>
+              </div>
+            </div>
+            <div class="bg-white rounded p-3">
+              <label>Quý khách sẽ tham dự tiệc cưới tại Đà Lạt chứ?</label>
+              <div class="flex flex-col">
+                <label for="is_attending_1">
+                  <input
+                    type="radio"
+                    id="is_attending_1"
+                    name="is_attending"
+                    value="yes"
+                    required
+                  />
+                  Có, tôi sẽ tham dự
+                </label>
+                <label for="is_attending_2">
+                  <input
+                    type="radio"
+                    id="is_attending_2"
+                    name="is_attending"
+                    value="no"
+                  />
+                  Xin lỗi, tôi không thể tham dự
+                </label>
+              </div>
+            </div>
+            <div class="bg-white rounded p-3">
+              <label>Quý khách có yêu cầu gì về thực đơn?</label>
+              <div class="flex flex-col">
+                <label for="is_vegetarian_1">
+                  <input
+                    type="radio"
+                    id="is_vegetarian_1"
+                    name="is_vegetarian"
+                    value="no"
+                    required
+                  />
+                  Không có
+                </label>
+                <label for="is_vegetarian_2">
+                  <input
+                    type="radio"
+                    id="is_vegetarian_2"
+                    name="is_vegetarian"
+                    value="yes"
+                  />
+                  Ăn chay
+                </label>
+              </div>
+            </div>
             <button
               class="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 transition-colors"
             >
-              Tôi sẽ tham dự
+              Gửi đi
             </button>
           </form>
         </div>
       </section>
     </main>
-    <footer class="text-center bg-white font-lobster text-sm text-fuchsia-900">
-      By Kyle with love &lt;3
-    </footer>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/toastify-js"
@@ -569,25 +455,13 @@
       const gsap = window.gsap ?? {};
       window.addEventListener("load", (event) => {
         window.scrollTo(0, 0);
-
-        const startButton = document.getElementById("start-btn");
-        gsap.fromTo(
-          startButton,
-          { opacity: 0, scale: 0 },
-          { opacity: 1, scale: 1 }
-        );
-
-        startButton.style.display = "block";
-        startButton.onclick = () => {
-          document.getElementById("audio")?.play();
-          gsap.to("#loading", {
-            y: -window.innerHeight,
-            onComplete() {
-              document.getElementById("loading")?.remove();
-              document.body.style.overflow = "auto";
-            },
-          });
-        };
+        gsap.to("#loading", {
+          opacity: 0,
+          onComplete() {
+            document.getElementById("loading")?.remove();
+            document.body.style.overflow = "auto";
+          },
+        });
       });
 
       tsParticles.load({

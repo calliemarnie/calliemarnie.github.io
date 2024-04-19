@@ -39,7 +39,12 @@ window.addEventListener("DOMContentLoaded", function () {
       break;
   }
 
-  const submit = (payload: { name: string; phoneNumber: string }) => {
+  const submit = (payload: {
+    name: string;
+    attending: string;
+    vegetarian: string;
+    guessType: string;
+  }) => {
     return new Promise<string>((resolve, reject) => {
       grecaptcha.ready(async function () {
         try {
@@ -81,8 +86,11 @@ window.addEventListener("DOMContentLoaded", function () {
     e.submitter.appendChild(spinner);
     const data = new FormData(e.target! as HTMLFormElement);
     const name = data.get("name") as string;
-    const phoneNumber = data.get("phoneNumber") as string;
-    await submit({ name, phoneNumber });
+    const guessType = data.get("guess_type") as string;
+    const vegetarian = data.get("is_vegetarian") as string;
+    const attending = data.get("is_attending") as string;
+    console.log({ name, guessType, attending, vegetarian });
+    await submit({ name, guessType, attending, vegetarian });
     // Cleaning up the form
     form.reset();
     e.submitter.classList.remove("loading");

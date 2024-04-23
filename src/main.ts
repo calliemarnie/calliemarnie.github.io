@@ -103,7 +103,25 @@ window.addEventListener("DOMContentLoaded", function () {
     if (import.meta.env.DEV) {
       console.log({ name, guessType, attending, vegetarian, withFamily });
     }
-    await submit({ name, guessType, attending, vegetarian, withFamily });
+    await submit({ name, guessType, attending, vegetarian, withFamily })
+      .then(() => {
+        Toastify({
+          text: "Cảm ơn bạn đã phản hồi. Chúng tôi rất mong đợi sự có mặt của bạn.",
+          duration: 5000,
+          gravity: "bottom",
+          position: "right",
+          stopOnFocus: true,
+        }).showToast();
+      })
+      .catch(() => {
+        Toastify({
+          text: "Đã có lỗi xảy ra :(",
+          duration: 5000,
+          gravity: "bottom",
+          position: "right",
+          stopOnFocus: true,
+        }).showToast();
+      });
     // Cleaning up the form
     form.reset();
     // Hide optional field
@@ -112,13 +130,6 @@ window.addEventListener("DOMContentLoaded", function () {
     e.submitter.classList.remove("loading");
     e.submitter.removeAttribute("disabled");
     e.submitter.removeChild(spinner);
-    Toastify({
-      text: "Cảm ơn bạn đã phản hồi. Chúng tôi rất mong đợi sự có mặt của bạn.",
-      duration: 5000,
-      gravity: "bottom",
-      position: "right",
-      stopOnFocus: true,
-    }).showToast();
   };
 
   const attendingInputs = document.querySelectorAll<HTMLInputElement>(

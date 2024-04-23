@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lobster&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lobster&family=Gilda+Display&family=Lora:wght@400..700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -27,7 +27,8 @@
         background-color: #530515;
         background-image: url("src/assets/loading.jpg");
         background-size: cover;
-        background-position: 35% 10%;
+        background-position: 20% 20%;
+        background-repeat: no-repeat;
       }
 
       #start-btn {
@@ -42,7 +43,6 @@
         border-radius: 4px;
         color: #530515;
         text-transform: uppercase;
-        font-weight: 500;
         transform: translate(-50%, -50%);
         transition: background-color 0.1s ease;
       }
@@ -57,7 +57,9 @@
   </head>
   <body>
     <div id="loading">
-      <button id="start-btn">Bắt đầu</button>
+      <button class="font-lora font-bold text-xl" id="start-btn">
+        Bắt đầu
+      </button>
     </div>
     <div id="tsparticles"></div>
     <main class="h-screen overflow-x-hidden overflow-y-auto snap-y">
@@ -79,7 +81,7 @@
           <div class="relative">
             <div
               id="date1"
-              class="relative text-[#530515] font-pacifico font-medium text-4xl my-16 z-[1]"
+              class="relative text-[#8d705a] font-pacifico font-medium text-4xl my-16 z-[1]"
             ></div>
             <svg
               class="w-80 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[calc(50%-0.8rem)] text-white"
@@ -105,7 +107,12 @@
             </svg>
           </div>
           <div class="relative">
-            <span class="text-8xl text-[#530515] font-pacifico"
+            <span
+              class="text-8xl text-[#8d705a] font-pacifico"
+              style="
+                text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+                  1px 1px 0 #fff;
+              "
               >Hoàng <br class="inline md:hidden" />
               & <br class="inline md:hidden" />
               Hiền</span
@@ -161,12 +168,11 @@
 
       <section
         class="snap-center bg-auto bg-repeat py-20"
-        style="background-color: #530515"
+        style="background-color: #28170f"
       >
-        <div class="section font-arial space-y-10">
+        <div class="section font-lora space-y-10">
           <div class="text-5xl md:text-7xl xl:text-8xl font-bold uppercase">
-            <p class="text-yellow-400">ngày</p>
-            <p class="text-white">trọng đại</p>
+            <p class="text-white">ngày trọng đại</p>
           </div>
           <div class="flex items-start gap-5">
             <div class="w-14 flex-shrink-0">
@@ -189,7 +195,7 @@
             </div>
 
             <div>
-              <p class="font-lobster text-3xl md:text-6xl text-yellow-400">
+              <p class="font-lobster text-3xl md:text-6xl text-white">
                 Thời gian
               </p>
               <div class="w-5 h-[1px] bg-white my-4"></div>
@@ -217,29 +223,21 @@
             </div>
 
             <div>
-              <p class="font-lobster text-3xl md:text-6xl text-yellow-400">
+              <p class="font-lobster text-3xl md:text-6xl text-white">
                 Địa điểm
               </p>
               <div class="w-5 h-[1px] bg-white my-4"></div>
               <p id="place" class="text-white font-semibold"></p>
             </div>
           </div>
-          <div class="flex gap-5">
-            <div class="w-14"></div>
-            <button
-              class="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 transition-colors"
-            >
-              Thông tin chi tiết
-            </button>
-          </div>
         </div>
       </section>
       <section class="snap-center">
         <iframe
+          class="aspect-video max-h-[640px]"
           id="location"
           title="map"
           width="100%"
-          height="640"
           style="border: 0"
           allowfullscreen=""
           loading="lazy"
@@ -254,16 +252,13 @@
           class="max-h-screen w-full max-w-full"
           loop
           playsinline
-        >
-          <source src="src/assets/video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        ></video>
       </section>
 
-      <section class="snap-center py-20 bg-[#530515]">
+      <section class="snap-center py-20 bg-[#28170f]">
         <div class="section text-center space-y-10">
           <div
-            class="relative inline-block uppercase text-center text-5xl md:text-7xl xl:text-8xl font-arial font-bold text-white"
+            class="relative inline-block uppercase text-center text-4xl md:text-7xl xl:text-8xl font-lora font-bold text-white"
           >
             <svg
               class="absolute w-10 -top-[45px] -left-[45px] rotate-[220deg] text-white"
@@ -290,7 +285,7 @@
             vài câu hỏi nhỏ
           </div>
           <div>
-            <span class="text-white font-arial font-medium text-lg max-w-3xl">
+            <span class="text-white font-lora font-medium text-lg max-w-3xl">
               Nếu bạn có thể đến chung vui, hãy cho chúng tôi biết nhé!
             </span>
           </div>
@@ -326,7 +321,7 @@
           </div>
           <form
             id="form"
-            class="!mt-20 text-start font-lobster space-y-5 md:text-xl"
+            class="!mt-20 text-start font-lora space-y-5 md:text-xl"
           >
             <div class="bg-white rounded p-4 flex items-center gap-3">
               <label for="name" class="flex-shrink-0">
@@ -425,6 +420,29 @@
                 </label>
               </div>
             </div>
+            <div class="bg-white rounded p-4 hidden" id="is_with_family_block">
+              <label>Quý khách có đi cùng người thân không?</label>
+              <div class="flex flex-col">
+                <label for="is_with_family_1">
+                  <input
+                    type="radio"
+                    id="is_with_family_1"
+                    name="is_with_family"
+                    value="yes"
+                  />
+                  Có
+                </label>
+                <label for="is_with_family_2">
+                  <input
+                    type="radio"
+                    id="is_with_family_2"
+                    name="is_with_family"
+                    value="no"
+                  />
+                  Không
+                </label>
+              </div>
+            </div>
             <div class="bg-white rounded p-4">
               <label>Quý khách có yêu cầu gì về thực đơn?</label>
               <div class="flex flex-col">
@@ -450,7 +468,7 @@
               </div>
             </div>
             <button
-              class="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 transition-colors"
+              class="px-6 py-3 bg-[#8d705a] text-white font-bold transition-colors"
             >
               Gửi đi
             </button>
@@ -467,6 +485,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@3/tsparticles.preset.stars.bundle.min.js"></script>
     <script>
+      const hash = window.location.hash;
+      const date = hash?.slice(1);
       const gsap = window.gsap ?? {};
       window.addEventListener("load", (event) => {
         window.scrollTo(0, 0);
@@ -484,6 +504,10 @@
             onComplete() {
               document.getElementById("loading")?.remove();
               const video = document.getElementById("video");
+              const source = document.createElement("source");
+              video.appendChild(source);
+              source.setAttribute("src", `/${date}.mp4`);
+              source.setAttribute("type", "video/mp4");
               video?.play();
             },
           });

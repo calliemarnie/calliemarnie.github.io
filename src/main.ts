@@ -53,6 +53,7 @@ window.addEventListener("DOMContentLoaded", function () {
     attending: string;
     vegetarian: string;
     guessType: string;
+    withFamily: string;
   }) => {
     return new Promise<string>((resolve, reject) => {
       grecaptcha.ready(async function () {
@@ -98,10 +99,16 @@ window.addEventListener("DOMContentLoaded", function () {
     const guessType = data.get("guess_type") as string;
     const vegetarian = data.get("is_vegetarian") as string;
     const attending = data.get("is_attending") as string;
-    console.log({ name, guessType, attending, vegetarian });
-    await submit({ name, guessType, attending, vegetarian });
+    const withFamily = data.get("is_with_family") as string;
+    if (import.meta.env.DEV) {
+      console.log({ name, guessType, attending, vegetarian, withFamily });
+    }
+    await submit({ name, guessType, attending, vegetarian, withFamily });
     // Cleaning up the form
     form.reset();
+    // Hide optional field
+    const isWithFamBlock = document.getElementById("is_with_family_block")!;
+    isWithFamBlock.style.display = "none";
     e.submitter.classList.remove("loading");
     e.submitter.removeAttribute("disabled");
     e.submitter.removeChild(spinner);
@@ -113,4 +120,20 @@ window.addEventListener("DOMContentLoaded", function () {
       stopOnFocus: true,
     }).showToast();
   };
+
+  const attendingInputs = document.querySelectorAll<HTMLInputElement>(
+    "input[name=is_attending]"
+  )!;
+  const isWithFamBlock = document.getElementById("is_with_family_block")!;
+  attendingInputs.forEach((input) => {
+    input.onchange = (e) => {
+      const el = e.target as HTMLInputElement;
+      if (el.value === "yes") {
+        isWithFamBlock.style.display = "block";
+      } else {
+        isWithFamBlock.style.display = "none";
+      }
+    };
+  });
+  console.log(attendingInputs);
 });

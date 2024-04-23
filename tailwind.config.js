@@ -7,6 +7,8 @@ export default {
       pacifico: ["Pacifico"],
       arial: ["Arial"],
       lobster: ["Lobster"],
+      gilda: ["Gilda Display"],
+      lora: ["Lora"],
     },
   },
   plugins: [],

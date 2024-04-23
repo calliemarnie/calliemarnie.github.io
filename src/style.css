@@ -2,32 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --cursor-size: 2.5rem;
-  --cursor-size-inner: 1rem;
-}
-
-#cursor {
-  display: grid;
-  place-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: var(--cursor-size);
-  height: var(--cursor-size);
-  background-color: transparent;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  transition: transform 0.1s ease;
-}
-
-#cursor > div {
-  width: var(--cursor-size-inner);
-  height: var(--cursor-size-inner);
-  background-color: #fff;
-  border-radius: 50%;
-}
-
 .section {
   @apply mx-auto px-5 md:px-0 md:max-w-[720px] lg:max-w-[840px] xl:max-w-[960px];
 }
